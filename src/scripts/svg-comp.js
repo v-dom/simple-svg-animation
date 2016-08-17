@@ -1,18 +1,32 @@
 export default h =>
-  () => (h('svg', {
-
+  ({
+    endEventHandler
+  }) => (h('svg', {
     attrs: {
-      width: '600px',
-      heigth: '300px'
+      width: '100px',
+      heigth: '100px'
     }
 
   }, [
     h('circle', {
       attrs: {
-        cx: 56,
-        cy: 56,
-        r: 56,
-        fill: 'yellow'
+        cx: 10,
+        cy: 10,
+        r: 5,
+        fill: 'red'
       }
-    })
+    }, [
+      h('animate', {
+        on: {
+          endEvent: [endEventHandler, 'circle animate end']
+        },
+        attrs: {
+          attributeType: 'XML',
+          attributeName: 'cx',
+          from: '10',
+          to: '98',
+          dur: '5s'
+        }
+      })
+    ])
   ]));

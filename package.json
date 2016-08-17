@@ -71,7 +71,7 @@
     "prepublish:remove": "rm -rf ./build",
     "prepublish:create": "mkdir build",
     "prepublish": "npm run prepublish:remove && npm run prepublish:create",
-    "test": "NODE_PATH=src babel-node src/index.js | tap-colorize",
+    "test": "NODE_PATH=src babel-node src/tests/index.js | tap-colorize",
     "uglify": "uglifyjs ./build/bundle.js --stats --mangle --output ./dist/bundle.js",
     "update": "updtr"
   },
