@@ -24,8 +24,9 @@ export default h =>
           attributeType: 'XML',
           attributeName: 'cx',
           from: '10',
-          to: '98',
-          dur: '5s'
+          to: '90',
+          dur: '3s',
+          fill: 'freeze'
         }
       })
     ])
