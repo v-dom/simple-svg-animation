@@ -17,10 +17,10 @@ const render = () => {
   let newVnode;
 
   newVnode = contFromLeftToRight({
-    endEventHandler: () => {
+    endEventHandler: value => {
       newVnode = contFromLeftToRight({
         endEventHandler: '',
-        msg: 'end'
+        msg: value
       });
       oldVnode = patch(oldVnode, newVnode);
     },
