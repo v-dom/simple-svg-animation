@@ -1,6 +1,6 @@
 import snabbdom from 'snabbdom';
 import h from 'snabbdom/h';
-import createSvgComp from 'scripts/svg-comp';
+import createContFromLeftToRight from 'scripts/cont-from-left-to-right';
 
 const patch = snabbdom.init([
   require('snabbdom/modules/props'),
@@ -8,7 +8,7 @@ const patch = snabbdom.init([
   require('snabbdom/modules/eventlisteners')
 ]);
 
-const svgComp = createSvgComp(h);
+const contFromLeftToRight = createContFromLeftToRight(h);
 
 let oldVnode = document.querySelector('#root');
 
@@ -16,10 +16,15 @@ const render = () => {
 
   let newVnode;
 
-  newVnode = svgComp({
-    endEventHandler: (val) => {
-      console.log(val);
-    }
+  newVnode = contFromLeftToRight({
+    endEventHandler: () => {
+      newVnode = contFromLeftToRight({
+        endEventHandler: '',
+        msg: 'end'
+      });
+      oldVnode = patch(oldVnode, newVnode);
+    },
+    msg: 'init'
   });
 
   oldVnode = patch(oldVnode, newVnode);
